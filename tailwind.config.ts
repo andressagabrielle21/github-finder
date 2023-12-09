@@ -8,6 +8,25 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        fromTop: {
+          '0%': { 
+            opacity: '0',
+            transform: 'translateY(100%)' 
+          },
+          '50%': { 
+            opacity: '0',
+            transform: 'translate(50)' 
+          },
+          '100%': { 
+            opacity: '1',
+            transform: 'translateY(0)' 
+          },
+        },
+      },
+      animation: {
+        'animateFromTop': 'fromTop 1s',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

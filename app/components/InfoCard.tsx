@@ -1,18 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
+import { UserProps } from "../types/user"
 
-export type InfoCardProp = {
-  avatar_url: string,
-  name: string,
-  login: string,
-  location: string,
-  blog: string,
-  company: string,
-  public_repos: number,
-  bio: string
-}
-
-const InfoCard = ({avatar_url, name, login, bio, location, blog, company, public_repos}: InfoCardProp) => {
+const InfoCard = ({avatar_url, name, login, bio, location, blog, company, public_repos}: UserProps) => {
   return (
     <div className="flex justify-evenly items-start gap-10 secundary-color border-[1.5px] rounded-[20px] p-10">
       <Image className="rounded-full" src={avatar_url} alt="profile pic" width={200} height={200}/>
