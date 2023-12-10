@@ -7,7 +7,6 @@ type SearchProps = {
 import { useState, KeyboardEvent } from "react";
 import Button from "./Button"
 import Image from "next/image"
-import { getRepositories } from "./actions";
 
 const Search = ({loadUser}: SearchProps) => {
   const [search, setSearch] = useState("");
@@ -15,7 +14,7 @@ const Search = ({loadUser}: SearchProps) => {
   const handleEnter = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       loadUser(search)
-      getRepositories(search);
+      // getRepositories(search);
     }
   }
 

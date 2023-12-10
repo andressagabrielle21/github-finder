@@ -1,25 +1,30 @@
-export type itemProps = {
+type itemProps = {
   id: string,
-  repoName: string,
+  name: string,
   description: string,
-  cloneUrl: string,
-  deployed: string,
+  clone_url: string,
+  homepage: string,
 }
 
-type RepoProp = {
-  user: (username: string) => Promise<string>;
-}
+export const getRepositories = async (username: string) => {
+  const response = await fetch (`https://api.github.com/users/${username}/repos?sort=created&direction=desc`) 
+  const data = await response.json();
 
-const RepoCard = ({user}: RepoProp) => {
-  const data = actions(user)
+  if (response.status === 404) {
+    return;
+  }
 
-  return (
-    <div className="m-auto primary-color border-[1.5px]">
-      {data.map((item: itemProps) => (
-        <p>{item.repoName}</p>
-      ))}
-    </div>
-  )
-}
-
-export default RepoCard
+  const formattedData = data.map((item : itemProps) => ({
+    id: item.id,
+    repoName: item.name,
+    description: item.description,
+    cloneUrl: item.clone_url,
+    deployed: item.homepage,
+  }));
+  
+  console.log(formattedData)
+  // return formattedData
+  return formattedData.map((item: itemProps) => (
+    <p key={item.id}> {item.name} </p>
+  ));
+};

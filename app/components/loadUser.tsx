@@ -13,7 +13,7 @@ const loadUser = async(username : string) => {
   //   return;
   // }
   
-  const {name, avatar_url, login, location, blog, bio, company, public_repos} = data;
+  const {name, avatar_url, login, location, blog, bio, company, public_repos, followers, updated_at} = data;
 
   const userData: UserProps = {
     name,
@@ -23,7 +23,9 @@ const loadUser = async(username : string) => {
     blog, 
     company,
     public_repos,
-    bio
+    bio,
+    followers,
+    updated_at
   }
   return userData
 }
