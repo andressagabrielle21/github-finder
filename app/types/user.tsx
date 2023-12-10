@@ -7,4 +7,6 @@ export type UserProps = {
   bio: string,
   company: string,
   public_repos: number,
+  followers: number,
+  updated_at: Date
 }

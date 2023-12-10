@@ -1,11 +1,17 @@
 import { UserProps } from '../types/user'
 
-const loadUser = async (user: string ) => {
+const loadUser = async(username : string) => {
+
   const response = await fetch(
-    `https://api.github.com/users/${user}`
+    `https://api.github.com/users/${username}`
   )
 
   const data = await response.json()
+
+  // if (response.status === 404) {
+  //   setError(true);
+  //   return;
+  // }
   
   const {name, avatar_url, login, location, blog, bio, company, public_repos} = data;
 
@@ -19,8 +25,7 @@ const loadUser = async (user: string ) => {
     public_repos,
     bio
   }
-
-  return userData;
+  return userData
 }
 
 export default loadUser

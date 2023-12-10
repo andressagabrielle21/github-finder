@@ -1,4 +1,4 @@
-export type itemProps = {
+type itemProps = {
   id: string,
   name: string,
   description: string,
@@ -6,57 +6,25 @@ export type itemProps = {
   homepage: string,
 }
 
-interface userProp {
-  user: (user: string) => void;
-}
+export const getRepositories = async (username: string) => {
+  const response = await fetch (`https://api.github.com/users/${username}/repos?sort=created&direction=desc`) 
+  const data = await response.json();
 
-// const actions = (user : string) => {
+  if (response.status === 404) {
+    return;
+  }
 
-//   const getRepositories = async () => {
-//     const response = await fetch (`https://api.github.com/users/${user}/repos?sort=created&direction=desc`) 
-//     const data = await response.json();
-
-//     const formattedData = data.map((item : itemProps) => ({
-//       id: item.id,
-//       repoName: item.name,
-//       description: item.description,
-//       cloneUrl: item.clone_url,
-//       deployed: item.homepage,
-//     }));
-    
-//     console.log(formattedData)
-//     return formattedData
-        
-//   };
-
-//   getRepositories();
-
-//   return (
-//     <p>{getRepositories(user)}</p>
-//   )
-// }
-
-// export default actions
-
-// page is a paramater
-// number is the TYPE of the parameter (typescript)
-export const actions = async (user: userProp) => {
-    const response = await fetch (`https://api.github.com/users/${user}/repos?sort=created&direction=desc`) 
-    const data = await response.json();
-
-    const formattedData = data.map((item : itemProps) => ({
-      id: item.id,
-      repoName: item.name,
-      description: item.description,
-      cloneUrl: item.clone_url,
-      deployed: item.homepage,
-    }));
-    
-    console.log(formattedData)
-
-  // Needed to convert it to a TSX file because of the components call
-  // Now returning as a map over page
-  return data.map((item: itemProps) => (
+  const formattedData = data.map((item : itemProps) => ({
+    id: item.id,
+    repoName: item.name,
+    description: item.description,
+    cloneUrl: item.clone_url,
+    deployed: item.homepage,
+  }));
+  
+  console.log(formattedData)
+  // return formattedData
+  return formattedData.map((item: itemProps) => (
     <p key={item.id}> {item.name} </p>
   ));
 };
