@@ -13,7 +13,7 @@ const InfoCard = ({avatar_url, name, login, bio, location, blog, company, public
   const formattedDate = day + "/" + month + "/" + year;
 
   return (
-    <div className="flex flex-wrap justify-evenly items-start gap-10 secundary-color rounded-[20px] max-md:pt-10 md:p-10 m-auto">
+    <div className="flex flex-wrap justify-evenly items-start gap-10 secundary-color rounded-[20px] max-md:pt-10 md:p-10 md:pb-2 m-auto">
       <Image className="rounded-full" src={avatar_url} alt="profile pic" width={230} height={230}/>
 
       <div className="flex flex-col gap-10 max-md:text-center">

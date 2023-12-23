@@ -45,7 +45,7 @@ export default function Home() {
   }
 
   return (
-    <main className='primary-color w-100 gap-10 font-mono flex flex-col pt-20 max-md:pb-20'>
+    <main className='primary-color w-100 gap-10 font-mono flex flex-col pt-20 max-md:pb-20 md:mb-10'>
       <h1 className='text-5xl max-md:text-4xl font-bold m-auto'>Github Finder</h1>
       
       <Search loadUser={loadUser}/>
