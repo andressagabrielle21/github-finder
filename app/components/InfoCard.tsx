@@ -17,7 +17,7 @@ const InfoCard = ({avatar_url, name, login, bio, location, blog, company, public
       <Image className="rounded-full" src={avatar_url} alt="profile pic" width={230} height={230}/>
 
       <div className="flex flex-col gap-10 max-md:text-center">
-        <div>
+        <div className="max-md:text-center">
           <h1 className="text-4xl max-md:text-3xl font-bold mb-3">{name}</h1>
           <p className="text-[#0079FE]">@{login}</p>
         </div>

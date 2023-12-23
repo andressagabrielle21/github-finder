@@ -14,8 +14,14 @@ const Search = ({loadUser}: SearchProps) => {
   const handleEnter = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       loadUser(search)
+      setSearch("")
       // getRepositories(search);
     }
+  }
+
+  const onSubmit = () => {
+    loadUser(search);
+    setSearch("")
   }
 
   return (
@@ -23,7 +29,7 @@ const Search = ({loadUser}: SearchProps) => {
       <Image src="/search.png" alt="" width={25} height={25}/>
       <input value={search} onChange={(e) => setSearch(e.target.value)} className='text-slate-gray outline-none secundary-color border-none py-2 p-4 rounded-full max-md:pr-0' placeholder='Search username...' type="text" onKeyDown={handleEnter}/>
 
-      <Button label="Search" disabled={false} onClick={() => loadUser(search)}/>
+      <Button label="Search" disabled={false} onClick={onSubmit}/>
     </div>
   )
 }
