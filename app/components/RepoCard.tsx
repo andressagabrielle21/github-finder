@@ -1,10 +1,4 @@
-type itemProps = {
-  id: string,
-  name: string,
-  description: string,
-  clone_url: string,
-  homepage: string,
-}
+import { itemProps } from "../types/user";
 
 export const getRepositories = async (username: string) => {
   const response = await fetch (`https://api.github.com/users/${username}/repos?sort=created&direction=desc`) 

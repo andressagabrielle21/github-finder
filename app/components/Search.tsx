@@ -1,27 +1,23 @@
 "use client"
-
-type SearchProps = {
-  loadUser: (username: string) => Promise<void>;
-}
-
-import { useState, KeyboardEvent } from "react";
+import { useState, KeyboardEvent, useContext } from "react";
 import Button from "./Button"
 import Image from "next/image"
+import { UserDataContext } from "../context/UserData";
 
-const Search = ({loadUser}: SearchProps) => {
+const Search = () => {
+  const {setSearchUser} = useContext(UserDataContext)
+
   const [search, setSearch] = useState("");
+
 
   const handleEnter = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
-      loadUser(search)
-      setSearch("")
-      // getRepositories(search);
+      setSearchUser(search)
     }
   }
 
   const onSubmit = () => {
-    loadUser(search);
-    setSearch("")
+    setSearchUser(search);
   }
 
   return (
