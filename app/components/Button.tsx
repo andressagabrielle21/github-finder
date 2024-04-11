@@ -1,7 +1,7 @@
 export interface ButtonProp {
   label: string,
-  disabled: boolean,
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean,
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = ({label, disabled, onClick}: ButtonProp) => {

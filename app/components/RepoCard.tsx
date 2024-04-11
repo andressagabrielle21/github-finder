@@ -1,24 +1,23 @@
 import { itemProps } from "../types/user";
+import Button from "./Button";
 
-export const getRepositories = async (username: string) => {
-  const response = await fetch (`https://api.github.com/users/${username}/repos?sort=created&direction=desc`) 
-  const data = await response.json();
+const RepoCard = ({id, name, description, clone_url, homepage} : itemProps) => {
+  return (
+    <div className="primary-color flex flex-col p-8 gap-4 rounded-lg ">
+      <h1 className="text-2xl font-bold" key={id}> {name} </h1>
 
-  if (response.status === 404) {
-    return;
-  }
+      <p>{description}</p>
 
-  const formattedData = data.map((item : itemProps) => ({
-    id: item.id,
-    repoName: item.name,
-    description: item.description,
-    cloneUrl: item.clone_url,
-    deployed: item.homepage,
-  }));
-  
-  console.log(formattedData)
-  // return formattedData
-  return formattedData.map((item: itemProps) => (
-    <p key={item.id}> {item.name} </p>
-  ));
-};
+      <a href={clone_url}>
+        <Button label={"Project URL"} />
+      </a>
+
+      {homepage && <a href={clone_url}>
+        <Button label={"Deployed Project"} />
+      </a>}
+      
+    </div>
+  )
+}
+
+export default RepoCard
